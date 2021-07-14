@@ -60,7 +60,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
         }
         if (launchGUI) {
             try {
-                fxml = new URL("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/scripts/SkrrtPicker/src/scripts/gui/gui.fxml");
+                fxml = new URL("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/gui.fxml");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }

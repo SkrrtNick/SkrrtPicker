@@ -138,6 +138,11 @@ public class Controller extends AbstractGUIController {
         try {
             Profile settings = FileUtilities.gson.fromJson(new String(FileUtilities.loadFile(new File(Util.getWorkingDirectory().getAbsolutePath() + Core.getProfileDirectory() + "/last.json"))), Profile.class);
             load(settings);
+            if(darkMode.isSelected()){
+                getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+            } else {
+                getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+            }
         } catch (IOException e) {
             Logging.debug("Wasn't able to load last.json");
         }
@@ -151,13 +156,7 @@ public class Controller extends AbstractGUIController {
         itemName.setText(settings.getPickupItemName());
         useWorldhopping.setSelected(settings.isShouldWorldHop());
         darkMode.setSelected(settings.isDarkModeEnabled());
-        if(darkMode.isSelected()){
-            getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
-        } else {
-            getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
-        }
         useStaminas.setSelected(settings.isShouldUseStaminas());
-
     }
 
     public void save(Profile settings) {

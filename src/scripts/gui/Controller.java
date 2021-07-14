@@ -138,10 +138,8 @@ public class Controller extends AbstractGUIController {
         try {
             Profile settings = FileUtilities.gson.fromJson(new String(FileUtilities.loadFile(new File(Util.getWorkingDirectory().getAbsolutePath() + Core.getProfileDirectory() + "/last.json"))), Profile.class);
             load(settings);
-            if(darkMode.isSelected()){
-                getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
-            } else {
-                getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+            if(settings.darkModeEnabled){
+                darkMode.fire();
             }
         } catch (IOException e) {
             Logging.debug("Wasn't able to load last.json");

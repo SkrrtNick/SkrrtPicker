@@ -150,6 +150,9 @@ public class Controller extends AbstractGUIController {
         itemName.setText(settings.getPickupItemName());
         useWorldhopping.setSelected(settings.isShouldWorldHop());
         darkMode.setSelected(settings.isDarkModeEnabled());
+        getGUI().getStage().setOnShown((event) -> {
+            darkMode.fire();
+        });
         useStaminas.setSelected(settings.isShouldUseStaminas());
     }
 

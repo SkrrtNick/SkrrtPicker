@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.tribot.api.Timing;
 import scripts.data.Vars;
+import scripts.skrrt_api.util.functions.Logging;
 
 
 import javax.swing.*;
@@ -136,6 +137,7 @@ public class GUI extends Application {
 
         stage.setScene(scene);
         stage.setTitle("SkrrtPicker");
+
         stage.getIcons().add(new Image("https://i.imgur.com/8PYjG80.png"));
         stage.setOnCloseRequest(event -> {
             Vars.runningPrep = false;

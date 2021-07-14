@@ -11,6 +11,7 @@ import org.tribot.script.interfaces.Starting;
 import org.tribot.util.Util;
 import scripts.data.Profile;
 
+import scripts.gui.Controller;
 import scripts.gui.GUI;
 import scripts.skrrt_api.events.Core;
 import scripts.skrrt_api.task.Task;

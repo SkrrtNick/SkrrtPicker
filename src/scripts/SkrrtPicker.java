@@ -2,6 +2,7 @@ package scripts;
 
 import org.tribot.api.General;
 import org.tribot.api.input.Mouse;
+import org.tribot.api.types.generic.Condition;
 import org.tribot.script.Script;
 import org.tribot.script.ScriptManifest;
 import org.tribot.script.interfaces.Arguments;
@@ -12,12 +13,17 @@ import org.tribot.util.Util;
 import scripts.data.Profile;
 import scripts.gui.GUI;
 import scripts.skrrt_api.events.Core;
+import scripts.skrrt_api.listeners.inventory.InventoryListener;
+import scripts.skrrt_api.listeners.inventory.InventoryObserver;
 import scripts.skrrt_api.task.Task;
 import scripts.skrrt_api.task.TaskSet;
 import scripts.skrrt_api.util.antiban.Antiban;
+import scripts.skrrt_api.util.functions.Banking07;
 import scripts.skrrt_api.util.functions.Logging;
 import scripts.skrrt_api.util.functions.Traversing;
 import scripts.skrrt_api.util.numbers.SeedGenerator;
+import scripts.tasks.Banking;
+import scripts.tasks.IntitialCheck;
 import scripts.tasks.Picker;
 import scripts.utilities.FileUtilities;
 
@@ -30,7 +36,7 @@ import java.util.HashMap;
 
 import static scripts.data.Vars.*;
 
-public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting, Arguments, Ending {
+public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting, Arguments, Ending, InventoryListener {
 
     @ScriptManifest(name = "SkrrtPicker", authors = {"SkrrtNick"}, category = "Quests")
     private URL fxml, darkModeURL;
@@ -51,10 +57,10 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
         while (seed.getPlayerSeed() == 0) {
             seed.generateRandom();
             Core.setPlayerSeed(seed.getPlayerSeed());
-            if ((int) playerSeed * 100 > 200) {
+            if ((int) seed.getPlayerSeed() * 100 > 200) {
                 Mouse.setSpeed(General.random(130, 200));
             } else {
-                Mouse.setSpeed((int) (playerSeed * 100));
+                Mouse.setSpeed((int) (seed.getPlayerSeed() * 100));
             }
         }
         if (launchGUI) {
@@ -70,7 +76,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
             }
         }
 
-        TaskSet tasks = new TaskSet(new Picker());
+        TaskSet tasks = new TaskSet(new IntitialCheck(), new Banking(), new Picker());
 
         while (Core.isRunning) {
             Task task = tasks.getValidTask();
@@ -78,7 +84,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
                 Core.setStatus(task.toString());
                 task.execute();
             }
-            General.sleep(600);
+            General.sleep(20,40);
         }
 
     }
@@ -86,11 +92,15 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
     @Override
     public void onStart() {
         Traversing.setDaxKey(false);
+        InventoryObserver inventoryObserver = new InventoryObserver();
+        inventoryObserver.setCondition(()->!Banking07.isBankScreenOpen());
+        inventoryObserver.addListener(this);
+        inventoryObserver.start();
     }
 
     @Override
     public String[] getPaintInfo() {
-        return new String[]{"SkrrtPicker V0.01 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + status, "Item Name: "};
+        return new String[]{"SkrrtPicker V0.02 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + itemCount};
     }
 
 
@@ -130,5 +140,15 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
     @Override
     public void onEnd() {
         Antiban.destroy();
+    }
+
+    @Override
+    public void inventoryItemGained(int id, int count) {
+        itemCount = itemCount + count;
+    }
+
+    @Override
+    public void inventoryItemLost(int id, int count) {
+
     }
 }

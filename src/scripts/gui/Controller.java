@@ -104,9 +104,9 @@ public class Controller extends AbstractGUIController {
     @FXML
     void checkDarkMode(ActionEvent event) {
         if(darkMode.isSelected()){
-            getGUI().getScene().getStylesheets().add("dark-mode.css");
+            getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
         } else {
-            getGUI().getScene().getStylesheets().remove("dark-mode.css");
+            getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
         }
     }
 

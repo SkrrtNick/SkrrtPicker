@@ -13,7 +13,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane fx:id="ownerWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="237.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.gui.Controller">
    <children>
       <TextField fx:id="zCoordinate" layoutX="174.0" layoutY="118.0" prefHeight="25.0" prefWidth="40.0" />
@@ -33,7 +32,7 @@
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="load" mnemonicParsing="false" onAction="#loadClicked" text="Load" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <CheckMenuItem fx:id="darkMode" mnemonicParsing="false" onAction="#checkDarkMode" text="Dark Mode" />
+                  <CheckMenuItem fx:id="darkMode" mnemonicParsing="false" onAction="#checkDarkMode" selected="true" text="Dark Mode" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitClicked" text="Exit" />
                </items>

@@ -149,8 +149,9 @@ public class Controller extends AbstractGUIController {
         yCoordinate.setText(String.valueOf(settings.getY()));
         zCoordinate.setText(String.valueOf(settings.getZ()));
         itemName.setText(settings.getPickupItemName());
-        useWorldhopping.setSelected(settings.shouldWorldHop);
-        useStaminas.setSelected(settings.shouldUseStaminas);
+        useWorldhopping.setSelected(settings.isShouldWorldHop());
+        darkMode.setSelected(settings.isDarkModeEnabled());
+        useStaminas.setSelected(settings.isShouldUseStaminas());
 
     }
 
@@ -160,6 +161,7 @@ public class Controller extends AbstractGUIController {
         settings.setZ(Integer.parseInt(zCoordinate.getText()));
         settings.setPickupItemName(String.valueOf(itemName.getText()));
         settings.setShouldUseStaminas(useStaminas.isSelected());
+        settings.setDarkModeEnabled(darkMode.isSelected());
         settings.setShouldWorldHop(useWorldhopping.isSelected());
     }
 

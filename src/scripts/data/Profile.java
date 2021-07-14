@@ -8,7 +8,8 @@ public class Profile {
     @Setter
     public boolean
     shouldUseStaminas,
-    shouldWorldHop;
+    shouldWorldHop,
+    darkModeEnabled;
     @Getter @Setter
     public int x,y,z;
     @Getter @Setter

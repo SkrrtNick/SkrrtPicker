@@ -102,7 +102,7 @@ public class Controller extends AbstractGUIController {
 
 
     @FXML
-    void checkDarkMode(ActionEvent event) {
+    public void checkDarkMode(ActionEvent event) {
         if(darkMode.isSelected()){
             getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
         } else {
@@ -150,9 +150,6 @@ public class Controller extends AbstractGUIController {
         itemName.setText(settings.getPickupItemName());
         useWorldhopping.setSelected(settings.isShouldWorldHop());
         darkMode.setSelected(settings.isDarkModeEnabled());
-        getGUI().getStage().setOnShown((event) -> {
-            darkMode.fire();
-        });
         useStaminas.setSelected(settings.isShouldUseStaminas());
     }
 

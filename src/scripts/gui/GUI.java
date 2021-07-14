@@ -137,7 +137,7 @@ public class GUI extends Application {
 
         stage.setScene(scene);
         stage.setTitle("SkrrtPicker");
-
+        stage.resizableProperty().setValue(false);
         stage.getIcons().add(new Image("https://i.imgur.com/8PYjG80.png"));
         stage.setOnCloseRequest(event -> {
             Vars.runningPrep = false;

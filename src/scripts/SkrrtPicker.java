@@ -10,8 +10,6 @@ import org.tribot.script.interfaces.Painting;
 import org.tribot.script.interfaces.Starting;
 import org.tribot.util.Util;
 import scripts.data.Profile;
-
-import scripts.gui.Controller;
 import scripts.gui.GUI;
 import scripts.skrrt_api.events.Core;
 import scripts.skrrt_api.task.Task;
@@ -35,14 +33,14 @@ import static scripts.data.Vars.*;
 public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting, Arguments, Ending {
 
     @ScriptManifest(name = "SkrrtPicker", authors = {"SkrrtNick"}, category = "Quests")
-    private URL fxml,darkModeURL;
+    private URL fxml, darkModeURL;
     private GUI gui;
     private boolean launchGUI = true;
     private int i = 0;
     private final FluffeesPaint SkrrtPaint = new FluffeesPaint(this, FluffeesPaint.PaintLocations.BOTTOM_LEFT_PLAY_SCREEN, new Color[]{new Color(255, 251, 255)}, "Trebuchet MS", new Color[]{new Color(0, 0, 0, 124)},
             new Color[]{new Color(179, 0, 0)}, 1, false, 5, 3, 0);
 
-//C:\Users\Nick\AppData\Roaming\.tribot\src\scripts\gui\SkrrtPicker
+    //C:\Users\Nick\AppData\Roaming\.tribot\src\scripts\gui\SkrrtPicker
     @Override
     public void run() {
         Core.setRunning(true);
@@ -62,15 +60,10 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
         if (launchGUI) {
             try {
                 fxml = new URL("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/gui.fxml");
-                darkModeURL = new URL("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            if(runtimeSettings.darkModeEnabled){
-                gui = new GUI(fxml,darkModeURL);
-            } else {
-                gui = new GUI(fxml);
-            }
+            gui = new GUI(fxml);
             gui.show();
             while (gui.isOpen()) {
                 sleep(500);

@@ -138,7 +138,7 @@ public class Controller extends AbstractGUIController {
         try {
             Profile settings = FileUtilities.gson.fromJson(new String(FileUtilities.loadFile(new File(Util.getWorkingDirectory().getAbsolutePath() + Core.getProfileDirectory() + "/last.json"))), Profile.class);
             load(settings);
-            if(settings.darkModeEnabled){
+            if(this.getGUI() != null && settings.darkModeEnabled){
                 darkMode.fire();
             }
         } catch (IOException e) {
@@ -147,7 +147,6 @@ public class Controller extends AbstractGUIController {
     }
 
     public void load(Profile settings) {
-
         xCoordinate.setText(String.valueOf(settings.getX()));
         yCoordinate.setText(String.valueOf(settings.getY()));
         zCoordinate.setText(String.valueOf(settings.getZ()));

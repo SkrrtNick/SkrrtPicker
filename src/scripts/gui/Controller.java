@@ -151,6 +151,11 @@ public class Controller extends AbstractGUIController {
         itemName.setText(settings.getPickupItemName());
         useWorldhopping.setSelected(settings.isShouldWorldHop());
         darkMode.setSelected(settings.isDarkModeEnabled());
+        if(darkMode.isSelected()){
+            getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+        } else {
+            getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+        }
         useStaminas.setSelected(settings.isShouldUseStaminas());
 
     }
@@ -164,6 +169,5 @@ public class Controller extends AbstractGUIController {
         settings.setDarkModeEnabled(darkMode.isSelected());
         settings.setShouldWorldHop(useWorldhopping.isSelected());
     }
-
 
 }

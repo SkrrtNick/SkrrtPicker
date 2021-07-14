@@ -1,5 +1,6 @@
 package scripts.gui;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -151,6 +152,13 @@ public class Controller extends AbstractGUIController {
         useWorldhopping.setSelected(settings.isShouldWorldHop());
         darkMode.setSelected(settings.isDarkModeEnabled());
         useStaminas.setSelected(settings.isShouldUseStaminas());
+        Platform.runLater(() -> {
+            if(darkMode.isSelected()){
+                getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+            } else {
+                getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
+            }
+        });
     }
 
     public void save(Profile settings) {

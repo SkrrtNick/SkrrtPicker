@@ -138,9 +138,6 @@ public class Controller extends AbstractGUIController {
         try {
             Profile settings = FileUtilities.gson.fromJson(new String(FileUtilities.loadFile(new File(Util.getWorkingDirectory().getAbsolutePath() + Core.getProfileDirectory() + "/last.json"))), Profile.class);
             load(settings);
-            if(this.getGUI() != null && settings.darkModeEnabled){
-                darkMode.fire();
-            }
         } catch (IOException e) {
             Logging.debug("Wasn't able to load last.json");
         }

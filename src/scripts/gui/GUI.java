@@ -135,7 +135,6 @@ public class GUI extends Application {
             scene.getStylesheets().add(this.stylesheet.toExternalForm());
 
         stage.setScene(scene);
-
         stage.setTitle("SkrrtPicker");
         stage.getIcons().add(new Image("https://i.imgur.com/8PYjG80.png"));
         stage.setOnCloseRequest(event -> {

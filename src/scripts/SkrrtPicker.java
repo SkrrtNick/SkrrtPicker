@@ -34,7 +34,7 @@ import static scripts.data.Vars.*;
 public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting, Arguments, Ending {
 
     @ScriptManifest(name = "SkrrtPicker", authors = {"SkrrtNick"}, category = "Quests")
-    private URL fxml;
+    private URL fxml,darkModeURL;
     private GUI gui;
     private boolean launchGUI = true;
     private int i = 0;
@@ -61,10 +61,15 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
         if (launchGUI) {
             try {
                 fxml = new URL("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/gui.fxml");
+                darkModeURL = new URL("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            gui = new GUI(fxml);
+            if(runtimeSettings.darkModeEnabled){
+                gui = new GUI(fxml,darkModeURL);
+            } else {
+                gui = new GUI(fxml);
+            }
             gui.show();
             while (gui.isOpen()) {
                 sleep(500);

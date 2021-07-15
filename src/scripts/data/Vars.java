@@ -3,7 +3,9 @@ package scripts.data;
 
 import org.tribot.api.General;
 import org.tribot.api2007.types.RSArea;
+import org.tribot.api2007.types.RSItem;
 import org.tribot.api2007.types.RSTile;
+import scripts.skrrt_api.util.functions.Inventory07;
 
 public class Vars {
 
@@ -19,6 +21,9 @@ public class Vars {
     public static RSTile customTile = null;
     public static RSArea customArea = null;
     public static int initItemCount = 0;
+    public static int pickedCount = 0;
+    public static int pickupItemID = 0;
+    public static RSItem[] initInventory = null;
     public static boolean worldHopToP2P = false;
     //TASK RELATED
 

@@ -21,6 +21,7 @@ import scripts.skrrt_api.util.antiban.Antiban;
 import scripts.skrrt_api.util.functions.Banking07;
 import scripts.skrrt_api.util.functions.Logging;
 import scripts.skrrt_api.util.functions.Traversing;
+import scripts.skrrt_api.util.numbers.Prices;
 import scripts.skrrt_api.util.numbers.SeedGenerator;
 import scripts.tasks.Banking;
 import scripts.tasks.IntitialCheck;
@@ -100,7 +101,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
 
     @Override
     public String[] getPaintInfo() {
-        return new String[]{"SkrrtPicker V0.02 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + initItemCount};
+        return new String[]{"SkrrtPicker V0.02 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + pickedCount, "Profit: " + Prices.getPrices(pickupItemID).get() * pickedCount};
     }
 
 

@@ -39,7 +39,7 @@ import static scripts.data.Vars.*;
 
 public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting, Arguments, Ending, InventoryListener {
 
-    @ScriptManifest(name = "SkrrtPicker", authors = {"SkrrtNick"}, category = "Quests")
+    @ScriptManifest(name = "SkrrtPicker", authors = {"SkrrtNick"}, category = "Tools")
     private URL fxml, darkModeURL;
     private GUI gui;
     private boolean launchGUI = true;
@@ -47,12 +47,9 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
     private final FluffeesPaint SkrrtPaint = new FluffeesPaint(this, FluffeesPaint.PaintLocations.BOTTOM_LEFT_PLAY_SCREEN, new Color[]{new Color(255, 251, 255)}, "Trebuchet MS", new Color[]{new Color(0, 0, 0, 124)},
             new Color[]{new Color(179, 0, 0)}, 1, false, 5, 3, 0);
 
-    //C:\Users\Nick\AppData\Roaming\.tribot\src\scripts\gui\SkrrtPicker
     @Override
     public void run() {
         Core.setRunning(true);
-        Core.setProfileDirectory("/Skrrt/Picker/Profiles");
-        FileUtilities.createProfileDirectory(Core.profileDirectory);
         SeedGenerator seed = new SeedGenerator();
         Antiban.setPrintDebug(true);
         while (seed.getPlayerSeed() == 0) {
@@ -92,16 +89,18 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
 
     @Override
     public void onStart() {
+        Core.setProfileDirectory("/Skrrt/Picker/Profiles");
+        FileUtilities.createProfileDirectory(Core.profileDirectory);
         Traversing.setDaxKey(false);
-        InventoryObserver inventoryObserver = new InventoryObserver();
-        inventoryObserver.setCondition(()->!Banking07.isBankScreenOpen() && Game.getGameState() == 30);
-        inventoryObserver.addListener(this);
-        inventoryObserver.start();
     }
 
     @Override
     public String[] getPaintInfo() {
-        return new String[]{"SkrrtPicker V0.02 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + pickedCount, "Profit: " + Prices.getPrices(pickupItemID).get() * pickedCount};
+        if(pickupItemID!=0){
+            return new String[]{"SkrrtPicker V0.03 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + (pickedCount), "Profit: " + Prices.getPrices(pickupItemID).get() * pickedCount};
+        }
+        return new String[]{"SkrrtPicker V0.03 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + pickedCount};
+
     }
 
 
@@ -112,6 +111,8 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
 
     @Override
     public void passArguments(HashMap<String, String> hashMap) {
+        Core.setProfileDirectory("/Skrrt/Picker/Profiles");
+        FileUtilities.createProfileDirectory(Core.profileDirectory);
         String scriptSelect = hashMap.get("custom_input");
         String clientStarter = hashMap.get("autostart");
         String input = clientStarter != null ? clientStarter : scriptSelect;
@@ -132,6 +133,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
                 launchGUI = false;
                 runningPrep = true;
             } catch (IOException e) {
+                Logging.debug(e.getMessage());
                 Logging.debug("Unable to locate profile");
             }
         }

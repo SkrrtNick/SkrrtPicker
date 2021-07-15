@@ -1,5 +1,6 @@
 package scripts.gui;
 
+import com.allatori.annotations.DoNotRename;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,44 +20,61 @@ import java.io.IOException;
 import static scripts.data.Vars.runningPrep;
 import static scripts.data.Vars.runtimeSettings;
 
+@DoNotRename
 public class Controller extends AbstractGUIController {
     private String profile = "";
+    @DoNotRename
     @FXML
     private Pane ownerWindow;
 
+    @DoNotRename
     @FXML
     private TextField zCoordinate;
 
+    @DoNotRename
     @FXML
     private TextField yCoordinate;
 
+    @DoNotRename
     @FXML
     private TextField xCoordinate;
 
+    @DoNotRename
     @FXML
     private TextField itemName;
 
+    @DoNotRename
     @FXML
     private MenuItem save;
 
+    @DoNotRename
     @FXML
     private MenuItem saveAs;
 
+    @DoNotRename
     @FXML
     private MenuItem load;
 
+    @DoNotRename
     @FXML
     private MenuItem exit;
+    @DoNotRename
+
     @FXML
     private CheckMenuItem darkMode;
+    @DoNotRename
     @FXML
     private CheckBox useWorldhopping;
+    @DoNotRename
 
     @FXML
     private CheckBox useStaminas;
+    @DoNotRename
 
     @FXML
     private Button startBtn;
+
+    @DoNotRename
 
     @FXML
     void loadClicked(ActionEvent event) {
@@ -104,7 +122,7 @@ public class Controller extends AbstractGUIController {
 
     @FXML
     public void checkDarkMode(ActionEvent event) {
-        if(darkMode.isSelected()){
+        if (darkMode.isSelected()) {
             getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
         } else {
             getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
@@ -153,7 +171,7 @@ public class Controller extends AbstractGUIController {
         darkMode.setSelected(settings.isDarkModeEnabled());
         useStaminas.setSelected(settings.isShouldUseStaminas());
         Platform.runLater(() -> {
-            if(darkMode.isSelected()){
+            if (darkMode.isSelected()) {
                 getGUI().getScene().getStylesheets().add("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");
             } else {
                 getGUI().getScene().getStylesheets().remove("https://raw.githubusercontent.com/SkrrtNick/SkrrtPicker/master/src/scripts/gui/dark-mode.css");

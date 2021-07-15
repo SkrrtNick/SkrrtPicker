@@ -18,7 +18,7 @@ public class Vars {
     public static Profile runtimeSettings = null;
     public static RSTile customTile = null;
     public static RSArea customArea = null;
-    public static int itemCount = 0;
+    public static int initItemCount = 0;
     public static boolean worldHopToP2P = false;
     //TASK RELATED
 

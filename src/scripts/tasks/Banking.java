@@ -5,6 +5,8 @@ import scripts.skrrt_api.task.Priority;
 import scripts.skrrt_api.task.Task;
 import scripts.skrrt_api.util.functions.*;
 
+import static scripts.data.Vars.initItemCount;
+
 public class Banking implements Task {
 
     @Override
@@ -32,6 +34,7 @@ public class Banking implements Task {
             if(Banking07.openBank()){
                 Sleep.until(Banking07::isBankLoaded);
                 if(Banking07.depositAll()>0){
+                    initItemCount = 0;
                     Sleep.until(Inventory07::isEmpty);
                 }
             }

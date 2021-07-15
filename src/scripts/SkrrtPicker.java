@@ -2,7 +2,7 @@ package scripts;
 
 import org.tribot.api.General;
 import org.tribot.api.input.Mouse;
-import org.tribot.api.types.generic.Condition;
+import org.tribot.api2007.Game;
 import org.tribot.script.Script;
 import org.tribot.script.ScriptManifest;
 import org.tribot.script.interfaces.Arguments;
@@ -93,14 +93,14 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
     public void onStart() {
         Traversing.setDaxKey(false);
         InventoryObserver inventoryObserver = new InventoryObserver();
-        inventoryObserver.setCondition(()->!Banking07.isBankScreenOpen());
+        inventoryObserver.setCondition(()->!Banking07.isBankScreenOpen() && Game.getGameState() == 30);
         inventoryObserver.addListener(this);
         inventoryObserver.start();
     }
 
     @Override
     public String[] getPaintInfo() {
-        return new String[]{"SkrrtPicker V0.02 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + itemCount};
+        return new String[]{"SkrrtPicker V0.02 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + initItemCount};
     }
 
 
@@ -144,7 +144,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
 
     @Override
     public void inventoryItemGained(int id, int count) {
-        itemCount = itemCount + count;
+        initItemCount = initItemCount++;
     }
 
     @Override

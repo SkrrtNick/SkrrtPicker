@@ -21,10 +21,12 @@ public class Vars {
     public static RSTile customTile = null;
     public static RSArea customArea = null;
     public static int initItemCount = 0;
+    public static int inventCount = 0;
     public static int pickedCount = 0;
     public static int pickupItemID = 0;
     public static RSItem[] initInventory = null;
     public static boolean worldHopToP2P = false;
+    public static boolean shouldBank = false;
     //TASK RELATED
 
 }

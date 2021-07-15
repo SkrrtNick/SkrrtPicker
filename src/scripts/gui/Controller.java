@@ -75,7 +75,6 @@ public class Controller extends AbstractGUIController {
     private Button startBtn;
 
     @DoNotRename
-
     @FXML
     void loadClicked(ActionEvent event) {
 
@@ -99,6 +98,7 @@ public class Controller extends AbstractGUIController {
         }
     }
 
+    @DoNotRename
     @FXML
     public void saveAsClicked(ActionEvent event) {
 
@@ -120,6 +120,7 @@ public class Controller extends AbstractGUIController {
     }
 
 
+    @DoNotRename
     @FXML
     public void checkDarkMode(ActionEvent event) {
         if (darkMode.isSelected()) {
@@ -129,12 +130,14 @@ public class Controller extends AbstractGUIController {
         }
     }
 
+    @DoNotRename
     @FXML
     void exitClicked(ActionEvent event) {
         this.getGUI().close();
         runningPrep = false;
     }
 
+    @DoNotRename
     @FXML
     public void saveClicked(ActionEvent event) {
         Profile settings = new Profile();
@@ -142,6 +145,7 @@ public class Controller extends AbstractGUIController {
         FileUtilities.createFile(FileUtilities.gson.toJson(settings), Core.getProfileDirectory() + "/" + profile);
     }
 
+    @DoNotRename
     @FXML
     public void startScriptPressed() {
         Profile settings = new Profile();

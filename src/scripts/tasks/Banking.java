@@ -60,6 +60,7 @@ public class Banking implements Task {
             if (staminaPotion.length > 0) {
                 if (staminaPotion[0].click("Drink")) {
                     Logging.message("StaminaEvent", "Sipped a Stam!");
+                    Sleep.until(()->!Inventory07.isEmpty());
                     if (!Game.isRunOn()) {
                         if (Options.setRunEnabled(true)) {
                             Sleep.until(Game::isRunOn);

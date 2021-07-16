@@ -21,6 +21,7 @@ import scripts.skrrt_api.util.antiban.Antiban;
 import scripts.skrrt_api.util.functions.Banking07;
 import scripts.skrrt_api.util.functions.Logging;
 import scripts.skrrt_api.util.functions.Traversing;
+import scripts.skrrt_api.util.items.ItemID;
 import scripts.skrrt_api.util.numbers.Hourly;
 import scripts.skrrt_api.util.numbers.Prices;
 import scripts.skrrt_api.util.numbers.SeedGenerator;
@@ -99,7 +100,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
     @Override
     public String[] getPaintInfo() {
         if(pickupItemID!=0){
-            return new String[]{"SkrrtPicker V0.03 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + (pickedCount) + Hourly.getHourly(pickedCount), "Profit: " + (Prices.getPrices(pickupItemID).get() * pickedCount) + Hourly.getHourly(Prices.getPrices(pickupItemID).get() * pickedCount)};
+            return new String[]{"SkrrtPicker V0.03 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + (pickedCount) + Hourly.getHourly(pickedCount), "Profit: " + ((Prices.getPrices(pickupItemID).get() * pickedCount) - (Prices.getPrices(ItemID.STAMINA_POTION1).get()) * sipsTaken) + Hourly.getHourly(Prices.getPrices(pickupItemID).get() * pickedCount)};
         }
         return new String[]{"SkrrtPicker V0.03 alpha", "Time ran: " + SkrrtPaint.getRuntimeString(), "Status: " + Core.getStatus(), "Items Picked: " + pickedCount};
 

@@ -46,7 +46,6 @@ public class Banking implements Task {
                 }
             }
         }
-        //TODO add stamina handling here
 
         if (runtimeSettings.isShouldUseStaminas() && Game.getRunEnergy() < General.random(15, 25)) {
             RSItem[] staminaPotion = Banking07.find(ItemCollections.getStaminaPotions());
@@ -60,6 +59,7 @@ public class Banking implements Task {
             if (staminaPotion.length > 0) {
                 if (staminaPotion[0].click("Drink")) {
                     Logging.message("StaminaEvent", "Sipped a Stam!");
+                    sipsTaken++;
                     Sleep.until(()->!Inventory07.isEmpty());
                     if (!Game.isRunOn()) {
                         if (Options.setRunEnabled(true)) {

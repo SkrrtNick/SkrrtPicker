@@ -10,6 +10,7 @@ import org.tribot.api2007.types.RSObject;
 import scripts.data.Vars;
 import scripts.skrrt_api.task.Priority;
 import scripts.skrrt_api.task.Task;
+import scripts.skrrt_api.util.antiban.Antiban;
 import scripts.skrrt_api.util.functions.*;
 import scripts.skrrt_api.util.numbers.Reactions;
 
@@ -35,6 +36,7 @@ public class Picker implements Task {
 
     @Override
     public void execute() {
+        Antiban.activateRun();
         if(initItemCount == 0 && pickupItemID == 0){
             if(Inventory07.getAll().length > 0){
                 pickupItemID = Inventory07.getAll()[0].getID();
@@ -49,7 +51,6 @@ public class Picker implements Task {
         Vars.customArea = new RSArea(Vars.customTile.translate(General.random(-3, -9), General.random(-3, -9)), Vars.customTile.translate(General.random(3, 9), General.random(3, 9)));
         if (!Player07.isMoving() && !Player07.isAnimating()) {
             if (Vars.groundItemObject) {
-                //TODO grounditem handling
                 RSGroundItem[] items = Interaction.getGroundItems(Vars.runtimeSettings.getPickupItemName());
                 if (items.length > 0) {
                     String[] actions = items[0].getDefinition().getGroundActions();

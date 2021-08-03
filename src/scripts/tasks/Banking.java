@@ -7,6 +7,7 @@ import org.tribot.api2007.types.RSItem;
 import scripts.data.Vars;
 import scripts.skrrt_api.task.Priority;
 import scripts.skrrt_api.task.Task;
+import scripts.skrrt_api.util.antiban.Antiban;
 import scripts.skrrt_api.util.functions.*;
 import scripts.skrrt_api.util.items.ItemCollections;
 
@@ -67,6 +68,7 @@ public class Banking implements Task {
                         }
                     }
                     if (Banking07.depositAll() > 0) {
+                        Antiban.sleep();
                         Sleep.until(Inventory07::isEmpty);
                     }
                 }

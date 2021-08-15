@@ -135,6 +135,7 @@ public class SkrrtPicker extends Script implements Starting, PaintInfo, Painting
     @Override
     public void onEnd() {
         Antiban.destroy();
+        tracker.stop();
     }
 
     void trackStats() {

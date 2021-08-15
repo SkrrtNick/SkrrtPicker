@@ -5,7 +5,6 @@ import org.tribot.api.General;
 import org.tribot.api2007.types.RSArea;
 import org.tribot.api2007.types.RSItem;
 import org.tribot.api2007.types.RSTile;
-import scripts.skrrt_api.util.functions.Inventory07;
 
 public class Vars {
 

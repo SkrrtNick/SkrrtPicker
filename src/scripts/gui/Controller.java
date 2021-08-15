@@ -10,8 +10,8 @@ import javafx.stage.FileChooser;
 import org.tribot.api.General;
 import org.tribot.util.Util;
 import scripts.data.Profile;
-import scripts.skrrt_api.events.Core;
-import scripts.skrrt_api.util.functions.Logging;
+import scripts.api.Core;
+import scripts.api.util.functions.Logging;
 import scripts.utilities.FileUtilities;
 
 import java.io.File;

@@ -6,9 +6,9 @@ import org.tribot.api2007.WorldHopper;
 import org.tribot.api2007.types.RSArea;
 import org.tribot.api2007.types.RSTile;
 import scripts.data.Vars;
-import scripts.skrrt_api.task.Priority;
-import scripts.skrrt_api.task.Task;
-import scripts.skrrt_api.util.functions.*;
+import scripts.api.task.Priority;
+import scripts.api.task.Task;
+import scripts.api.util.functions.*;
 
 import static scripts.data.Vars.*;
 

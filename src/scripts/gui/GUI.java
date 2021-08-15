@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.tribot.api.Timing;
 import scripts.data.Vars;
-import scripts.skrrt_api.util.functions.Logging;
 
 
 import javax.swing.*;

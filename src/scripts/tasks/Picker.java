@@ -8,11 +8,11 @@ import org.tribot.api2007.types.RSArea;
 import org.tribot.api2007.types.RSGroundItem;
 import org.tribot.api2007.types.RSObject;
 import scripts.data.Vars;
-import scripts.skrrt_api.task.Priority;
-import scripts.skrrt_api.task.Task;
-import scripts.skrrt_api.util.antiban.Antiban;
-import scripts.skrrt_api.util.functions.*;
-import scripts.skrrt_api.util.numbers.Reactions;
+import scripts.api.task.Priority;
+import scripts.api.task.Task;
+import scripts.api.util.antiban.Antiban;
+import scripts.api.util.functions.*;
+import scripts.api.util.numbers.Reactions;
 
 import static scripts.data.Vars.*;
 
